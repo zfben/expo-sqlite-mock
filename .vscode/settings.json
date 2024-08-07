@@ -1,0 +1,54 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "quickfix.biome": "explicit"
+  },
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "cSpell.words": [
+    "Antd",
+    "anticon",
+    "biomejs",
+    "builtins",
+    "colorfy",
+    "Faas",
+    "faasjs",
+    "Millis",
+    "onwarn",
+    "querystringify",
+    "RUNENV",
+    "SECRETID",
+    "SECRETKEY",
+    "SESSIONTOKEN",
+    "Tencentcloud",
+    "tencentcloudapi",
+    "tsup",
+    "typedoc",
+    "Useify",
+    "vuepress",
+    "zfben"
+  ],
+  "biome.requireConfiguration": true,
+  "biome_lsp.trace.server": "messages",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

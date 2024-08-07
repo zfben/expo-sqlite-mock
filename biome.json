@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noForEach": "off",
+        "noBannedTypes": "off",
+        "useArrowFunction": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noEmptyInterface": "off",
+        "noControlCharactersInRegex": "off",
+        "noAssignInExpressions": "off",
+        "noArrayIndexKey": "off",
+        "noConfusingVoidType": "warn",
+        "noFallthroughSwitchClause": "off"
+      },
+      "style": {
+        "noParameterAssign": "off",
+        "useLiteralEnumMembers": "off",
+        "noNonNullAssertion": "warn",
+        "useTemplate": "warn",
+        "useImportType": "error"
+      },
+      "performance": {
+        "noDelete": "off"
+      },
+      "a11y": {
+        "useAltText": "warn",
+        "useKeyWithClickEvents": "off",
+        "useValidAnchor": "off",
+        "noBlankTarget": "off"
+      }
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingComma": "es5",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded",
+      "jsxQuoteStyle": "single"
+    }
+  }
+}
