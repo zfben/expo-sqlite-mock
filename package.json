@@ -11,7 +11,7 @@
     "url": "https://github.com/zfben/expo-sqlite-mock/issues"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --silent --coverage --forceExit --detectOpenHandles --testTimeout=10000"
   },
   "jest": {
     "preset": "jest-expo",
