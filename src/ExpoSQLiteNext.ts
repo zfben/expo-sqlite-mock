@@ -11,8 +11,12 @@ import type {
   SQLiteRunResult,
 } from 'expo-sqlite/src/NativeStatement'
 
+const dbs: NativeDatabase[] = []
+
 export const mockedExpoSqliteNext = {
-  deleteDatabaseAsync: jest.fn(),
+  deleteDatabaseAsync: async () => {
+    for (const db of dbs) await db.closeAsync()
+  },
 
   NativeDatabase: jest
     .fn()
@@ -38,42 +42,32 @@ class NativeDatabase {
     } else {
       this.sqlite3Db = new sqlite3(':memory:')
     }
+    dbs.push(this)
   }
 
   //#region Asynchronous API
 
   initAsync = jest.fn().mockResolvedValue(null)
-  isInTransactionAsync = jest.fn().mockImplementation(async () => {
-    return this.sqlite3Db.inTransaction
-  })
-  closeAsync = jest.fn().mockImplementation(async () => {
-    return this.sqlite3Db.close()
-  })
-  execAsync = jest.fn().mockImplementation(async (source: string) => {
-    return this.sqlite3Db.exec(source)
-  })
-  serializeAsync = jest.fn().mockImplementation(async (databaseName: string) => {
-    return this.sqlite3Db.serialize({ attached: databaseName })
-  })
-  prepareAsync = jest.fn().mockImplementation(async (nativeStatement: NativeStatement, source: string) => {
+  isInTransactionAsync = async () => this.sqlite3Db.inTransaction
+  closeAsync = async () => this.sqlite3Db.close()
+  execAsync = async (source: string) => this.sqlite3Db.exec(source)
+  serializeAsync = async (databaseName: string) => this.sqlite3Db.serialize({ attached: databaseName })
+  prepareAsync = async (nativeStatement: NativeStatement, source: string) => {
     nativeStatement.sqlite3Stmt = this.sqlite3Db.prepare(source)
-  })
+  }
 
   //#endregion
 
   //#region Synchronous API
 
   initSync = jest.fn()
-  isInTransactionSync = jest.fn().mockImplementation(() => this.sqlite3Db.inTransaction)
-  closeSync = jest.fn().mockImplementation(() => this.sqlite3Db.close())
-  execSync = jest.fn().mockImplementation((source: string) => this.sqlite3Db.exec(source))
-  serializeSync = jest.fn().mockImplementation((databaseName: string) => {
-    return this.sqlite3Db.serialize({ attached: databaseName })
-  })
-  prepareSync = jest.fn().mockImplementation((nativeStatement: NativeStatement, source: string) => {
+  isInTransactionSync = () => this.sqlite3Db.inTransaction
+  closeSync = () => this.sqlite3Db.close()
+  execSync = (source: string) => this.sqlite3Db.exec(source)
+  serializeSync = (databaseName: string) => this.sqlite3Db.serialize({ attached: databaseName })
+  prepareSync = (nativeStatement: NativeStatement, source: string) => {
     nativeStatement.sqlite3Stmt = this.sqlite3Db.prepare(source)
-  })
-
+  }
   //#endregion
 }
 
@@ -108,17 +102,17 @@ class NativeStatement {
     const columnValues = result.done === false ? Object.values(result.value as Record<string, any>) : null
     return Promise.resolve(columnValues)
   })
-  public getAllAsync = jest.fn().mockImplementation((database: NativeDatabase) => Promise.resolve(this._allValues()))
-  public getColumnNamesAsync = jest.fn().mockImplementation(async (database: NativeDatabase) => {
+  public getAllAsync = (database: NativeDatabase) => Promise.resolve(this._allValues())
+  public getColumnNamesAsync = async (database: NativeDatabase) => {
     assert(this.sqlite3Stmt)
     return this.sqlite3Stmt.columns().map(column => column.name)
-  })
-  public resetAsync = jest.fn().mockImplementation(async (database: NativeDatabase) => {
+  }
+  public resetAsync = async (database: NativeDatabase) => {
     this._reset()
-  })
-  public finalizeAsync = jest.fn().mockImplementation(async (database: NativeDatabase) => {
+  }
+  public finalizeAsync = async (database: NativeDatabase) => {
     this._finalize()
-  })
+  }
 
   //#endregion
 
@@ -135,7 +129,7 @@ class NativeStatement {
       ): SQLiteRunResult & { firstRowValues: SQLiteColumnValues } =>
         this._run(normalizeSQLite3Args(bindParams, bindBlobParams, shouldPassAsArray))
     )
-  public stepSync = jest.fn().mockImplementation((database: NativeDatabase): any => {
+  public stepSync = (database: NativeDatabase): any => {
     assert(this.sqlite3Stmt)
     if (this.iterator == null) {
       this.iterator = this.sqlite3Stmt.iterate()
@@ -146,18 +140,18 @@ class NativeStatement {
     const result = this.iterator.next()
     const columnValues = result.done === false ? Object.values(result.value as Record<string, any>) : null
     return columnValues
-  })
-  public getAllSync = jest.fn().mockImplementation((database: NativeDatabase) => this._allValues())
-  public getColumnNamesSync = jest.fn().mockImplementation((database: NativeDatabase) => {
+  }
+  public getAllSync = (database: NativeDatabase) => this._allValues()
+  public getColumnNamesSync = (database: NativeDatabase) => {
     assert(this.sqlite3Stmt)
     return this.sqlite3Stmt.columns().map(column => column.name)
-  })
-  public resetSync = jest.fn().mockImplementation((database: NativeDatabase) => {
+  }
+  public resetSync = (database: NativeDatabase) => {
     this._reset()
-  })
-  public finalizeSync = jest.fn().mockImplementation((database: NativeDatabase) => {
+  }
+  public finalizeSync = (database: NativeDatabase) => {
     this._finalize()
-  })
+  }
 
   //#endregion
 
