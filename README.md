@@ -5,6 +5,11 @@
 
 Use expo-sqlite with jest.
 
+## Notice
+
+- **~2.0.0** is for expo-sqlite ~52.
+- **~1.0.0** is for expo-sqlite ~51.
+
 ## Usage
 
 1. `npm install -D expo-sqlite-mock` or `bun add -D expo-sqlite-mock`

@@ -26,6 +26,11 @@ export const mockedExpoSqliteNext = {
     ),
 
   NativeStatement: jest.fn().mockImplementation(() => new NativeStatement()),
+
+  defaultDatabaseDirectory: '.',
+
+  ensureDatabasePathExistsAsync: jest.fn().mockImplementation(async (databasePath: string) => {}),
+  ensureDatabasePathExistsSync: jest.fn().mockImplementation((databasePath: string) => {}),
 }
 
 //#region async sqlite3

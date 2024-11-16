@@ -4,7 +4,12 @@ import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite'
 import { render, screen } from '@testing-library/react-native'
 import { useEffect, useState } from 'react'
 
-jest.mock(`${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLiteNext`, () => mockedExpoSqliteNext)
+jest.mock(`${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLite`, () => mockedExpoSqliteNext)
+jest.mock(`${__dirname}/../../node_modules/expo-sqlite/build/pathUtils`, () => ({
+  createDatabasePath: jest.fn().mockImplementation((databaseName: string) => {
+    return databaseName
+  }),
+}))
 
 describe('SQLiteProvider', () => {
   it('should work', async () => {
