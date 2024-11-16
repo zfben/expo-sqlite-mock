@@ -14,3 +14,14 @@ Use expo-sqlite with jest.
 
 1. `npm install -D expo-sqlite-mock` or `bun add -D expo-sqlite-mock`
 2. Add `"setupFilesAfterEnv": ["expo-sqlite-mock/src/setup.ts"]` and `"testTimeout": 10000` to your jest config (It's in `package.json` for default expo project).
+
+## Changelog
+
+- **2.0.1**
+  - Fix setup.
+
+- **2.0.0**
+  - Update for expo-sqlite ~52.
+
+- **1.0.0**
+  - Initial version.
