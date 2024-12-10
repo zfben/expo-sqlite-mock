@@ -13,3 +13,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "expo-*"
+      - dependency-name: "react"
+      - dependency-name: "react-*"

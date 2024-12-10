@@ -34,8 +34,8 @@
     "better-sqlite3": "*",
     "@types/better-sqlite3": "*",
     "@types/react": "*",
-    "react": "*",
-    "react-test-renderer": "19.0.0",
+    "react": "^18",
+    "react-test-renderer": "^18",
     "@faasjs/jest": "*",
     "@testing-library/react-native": "*",
     "jest-expo": "~52"
