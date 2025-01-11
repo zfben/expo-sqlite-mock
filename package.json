@@ -11,10 +11,11 @@
     "url": "https://github.com/zfben/expo-sqlite-mock/issues"
   },
   "scripts": {
-    "test": "jest --coverage --forceExit --detectOpenHandles --testTimeout=10000"
+    "test": "jest --coverage --forceExit --testTimeout=10000"
   },
   "jest": {
     "preset": "jest-expo",
+    "testEnvironment": "node",
     "testRegex": "/*\\.test\\.tsx?$"
   },
   "files": [
@@ -29,15 +30,15 @@
   },
   "devDependencies": {
     "typescript": "*",
-    "@biomejs/biome": "*",
+    "@faasjs/lint": "*",
     "expo-sqlite": "*",
     "better-sqlite3": "*",
     "@types/better-sqlite3": "*",
-    "@types/react": "*",
+    "@types/react": "^18",
     "react": "^18",
     "react-test-renderer": "^18",
-    "@faasjs/jest": "*",
     "@testing-library/react-native": "*",
-    "jest-expo": "~52"
+    "jest-expo": "~52",
+    "jest": "*"
   }
 }
