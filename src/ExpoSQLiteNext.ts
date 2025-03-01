@@ -45,7 +45,7 @@ class NativeDatabase {
     if (serializedData != null) {
       this.sqlite3Db = new sqlite3(Buffer.from(serializedData))
     } else {
-      this.sqlite3Db = new sqlite3(':memory:')
+      this.sqlite3Db = new sqlite3(process.env.EXPO_SQLITE_MOCK || ':memory:')
     }
     dbs.push(this)
   }

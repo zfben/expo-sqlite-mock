@@ -1,6 +1,6 @@
 {
   "name": "expo-sqlite-mock",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "license": "MIT",
   "homepage": "https://github.com/zfben/expo-sqlite-mock",
   "repository": {
@@ -26,7 +26,7 @@
     "better-sqlite3": "*",
     "jest": "*",
     "expo-sqlite": "*",
-    "expo": "~52"
+    "expo": ">=52"
   },
   "devDependencies": {
     "typescript": "*",
@@ -40,6 +40,7 @@
     "react-native": "~0.77",
     "@testing-library/react-native": "*",
     "jest-expo": "~52",
+    "@types/jest": "*",
     "jest": "*"
   }
 }
