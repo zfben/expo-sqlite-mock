@@ -4,12 +4,18 @@ import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite'
 import { render, screen } from '@testing-library/react-native'
 import { useEffect, useState } from 'react'
 
-jest.mock(`${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLite`, () => mockedExpoSqliteNext)
-jest.mock(`${__dirname}/../../node_modules/expo-sqlite/build/pathUtils`, () => ({
-  createDatabasePath: jest.fn().mockImplementation((databaseName: string) => {
-    return databaseName
-  }),
-}))
+jest.mock(
+  `${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLite`,
+  () => mockedExpoSqliteNext
+)
+jest.mock(
+  `${__dirname}/../../node_modules/expo-sqlite/build/pathUtils`,
+  () => ({
+    createDatabasePath: jest.fn().mockImplementation((databaseName: string) => {
+      return databaseName
+    }),
+  })
+)
 
 describe('SQLiteProvider', () => {
   it('should work', async () => {
@@ -18,7 +24,11 @@ describe('SQLiteProvider', () => {
       const [version, setVersion] = useState('')
 
       useEffect(() => {
-        setVersion(db.getFirstSync<{ 'sqlite_version()': string }>('SELECT sqlite_version()')['sqlite_version()'])
+        setVersion(
+          db.getFirstSync<{ 'sqlite_version()': string }>(
+            'SELECT sqlite_version()'
+          )['sqlite_version()']
+        )
       }, [])
 
       return <Text>{version}</Text>
@@ -43,9 +53,15 @@ describe('SQLiteProvider', () => {
       const [value, setValue] = useState('')
 
       useEffect(() => {
-        db.execSync('CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)')
+        db.execSync(
+          'CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)'
+        )
         db.execSync("INSERT INTO test (value) VALUES ('hello')")
-        setValue(db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1').value)
+        setValue(
+          db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1')
+            .value
+        )
+        db.execSync('DROP TABLE test')
       }, [])
 
       return <Text>{value}</Text>
@@ -70,9 +86,15 @@ describe('SQLiteProvider', () => {
       const [value, setValue] = useState('')
 
       useEffect(() => {
-        db.execSync('CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)')
+        db.execSync(
+          'CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)'
+        )
         db.execSync("INSERT INTO test (value) VALUES ('hello')")
-        setValue(db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1').value)
+        setValue(
+          db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1')
+            .value
+        )
+        db.execSync('DROP TABLE test')
       }, [])
 
       return <Text>{value}</Text>
@@ -99,9 +121,15 @@ describe('SQLiteProvider', () => {
       const [value, setValue] = useState('')
 
       useEffect(() => {
-        db.execSync('CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)')
+        db.execSync(
+          'CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)'
+        )
         db.execSync("INSERT INTO test (value) VALUES ('hello')")
-        setValue(db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1').value)
+        setValue(
+          db.getFirstSync<{ value: string }>('SELECT value FROM test LIMIT 1')
+            .value
+        )
+        db.execSync('DROP TABLE test')
       }, [])
 
       return <Text>{value}</Text>

@@ -41,6 +41,7 @@
     "@testing-library/react-native": "*",
     "jest-expo": "~52",
     "@types/jest": "*",
-    "jest": "*"
+    "jest": "*",
+    "drizzle-orm": "*"
   }
 }
