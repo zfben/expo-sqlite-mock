@@ -52,6 +52,10 @@ it("test", async () => {
 
 ## Changelog
 
+- **2.2.0**
+  - Compatible with drizzle
+  - Clean up the code
+
 - **2.1.0**
   - Support custom SQLite database location by setting the `EXPO_SQLITE_MOCK` environment variable.
   - Update peer dependencies.
