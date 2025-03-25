@@ -16,6 +16,7 @@ jest.mock(
 import * as SQLite from 'expo-sqlite'
 import { drizzle } from 'drizzle-orm/expo-sqlite'
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { eq } from 'drizzle-orm'
 
 const testTable = sqliteTable('test', {
   id: int().primaryKey({ autoIncrement: true }),
@@ -65,6 +66,30 @@ describe('drizzle', () => {
     ])
 
     expect(await db.select().from(testTable).all()).toHaveLength(3)
+
+    await db.run('DROP TABLE test')
+  })
+
+  it('delete with returning', async () => {
+    const expo = SQLite.openDatabaseSync('')
+    const db = drizzle(expo)
+
+    await db.run(
+      'CREATE TABLE test (id INTEGER PRIMARY KEY NOT NULL, value TEXT)'
+    )
+
+    await db.insert(testTable).values({ value: 'hello' })
+
+    expect(
+      await db.delete(testTable).where(eq(testTable.value, 'hello')).returning()
+    ).toMatchObject([
+      {
+        id: 1,
+        value: 'hello',
+      },
+    ])
+
+    expect(await db.select().from(testTable).all()).toHaveLength(0)
 
     await db.run('DROP TABLE test')
   })
