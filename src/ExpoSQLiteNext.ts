@@ -1,14 +1,15 @@
 import sqlite3 from 'better-sqlite3'
 
-import type { SQLiteOpenOptions } from 'expo-sqlite/src/NativeDatabase'
 import type {
-  SQLiteBindBlobParams,
+  SQLiteBindValue,
+  SQLiteOpenOptions,
   SQLiteBindParams,
-  SQLiteBindPrimitiveParams,
-  SQLiteColumnNames,
-  SQLiteColumnValues,
-  SQLiteRunResult,
-} from 'expo-sqlite/src/NativeStatement'
+  SQLiteRunResult, } from 'expo-sqlite'
+
+type SQLiteBindBlobParams = Record<string, Uint8Array>
+type SQLiteBindPrimitiveParams = Record<string, Exclude<SQLiteBindValue, Uint8Array>>
+type SQLiteColumnNames = string[]
+type SQLiteColumnValues = any[]
 
 const dbs: NativeDatabase[] = []
 

@@ -24,9 +24,9 @@
   ],
   "peerDependencies": {
     "better-sqlite3": "*",
-    "jest": "*",
+    "jest": "~29",
     "expo-sqlite": "*",
-    "expo": ">=52"
+    "expo": ">=53"
   },
   "devDependencies": {
     "typescript": "*",
@@ -34,14 +34,14 @@
     "expo-sqlite": "*",
     "better-sqlite3": "*",
     "@types/better-sqlite3": "*",
-    "@types/react": "^18",
-    "react": "^18",
-    "react-test-renderer": "^18",
-    "react-native": "~0.77",
-    "@testing-library/react-native": "*",
+    "@types/react": "*",
+    "react": "*",
+    "react-test-renderer": "*",
+    "react-native": "~0.80",
+    "@testing-library/react-native": "~13",
     "jest-expo": "~53",
-    "@types/jest": "*",
-    "jest": "*",
+    "@types/jest": "~29",
+    "jest": "~29",
     "drizzle-orm": "*"
   }
 }

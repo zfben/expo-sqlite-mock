@@ -7,7 +7,8 @@ Use [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/) with jest.
 
 ## Notice
 
-- **~2.0.0** is for expo-sqlite >=52.
+- **~3.0.0** is for expo-sqlite ~53.
+- **~2.0.0** is for expo-sqlite ~52.
 - **~1.0.0** is for expo-sqlite ~51.
 
 ## Usage
@@ -51,6 +52,9 @@ it("test", async () => {
 ```
 
 ## Changelog
+
+- **3.0.0**
+  - Compatible with expo-sqlite ~15 and expo ~53.
 
 - **2.2.0**
   - Compatible with drizzle
