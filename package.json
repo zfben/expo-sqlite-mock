@@ -39,7 +39,7 @@
     "react-test-renderer": "*",
     "react-native": "~0.80",
     "@testing-library/react-native": "~13",
-    "jest-expo": "~53",
+    "jest-expo": "~54",
     "@types/jest": "~29",
     "jest": "~29",
     "drizzle-orm": "*"
