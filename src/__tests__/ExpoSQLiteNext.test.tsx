@@ -1,21 +1,7 @@
-import { mockedExpoSqliteNext } from '../ExpoSQLiteNext'
-import { Text } from 'react-native'
-import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite'
 import { render, screen } from '@testing-library/react-native'
+import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite'
 import { useEffect, useState } from 'react'
-
-jest.mock(
-  `${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLite`,
-  () => mockedExpoSqliteNext
-)
-jest.mock(
-  `${__dirname}/../../node_modules/expo-sqlite/build/pathUtils`,
-  () => ({
-    createDatabasePath: jest.fn().mockImplementation((databaseName: string) => {
-      return databaseName
-    }),
-  })
-)
+import { Text } from 'react-native'
 
 describe('SQLiteProvider', () => {
   it('should work', async () => {

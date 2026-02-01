@@ -1,13 +1,17 @@
 import sqlite3 from 'better-sqlite3'
 
 import type {
+  SQLiteBindParams,
   SQLiteBindValue,
   SQLiteOpenOptions,
-  SQLiteBindParams,
-  SQLiteRunResult, } from 'expo-sqlite'
+  SQLiteRunResult,
+} from 'expo-sqlite'
 
 type SQLiteBindBlobParams = Record<string, Uint8Array>
-type SQLiteBindPrimitiveParams = Record<string, Exclude<SQLiteBindValue, Uint8Array>>
+type SQLiteBindPrimitiveParams = Record<
+  string,
+  Exclude<SQLiteBindValue, Uint8Array>
+>
 type SQLiteColumnNames = string[]
 type SQLiteColumnValues = any[]
 
@@ -91,16 +95,14 @@ class NativeStatement {
 
   //#region Asynchronous API
 
-  public runAsync = (
+  public runAsync = async (
     _database: NativeDatabase,
     bindParams: SQLiteBindPrimitiveParams,
     bindBlobParams: SQLiteBindBlobParams,
     shouldPassAsArray: boolean
   ): Promise<SQLiteRunResult & { firstRowValues: SQLiteColumnValues }> =>
-    Promise.resolve(
-      this._run(
-        normalizeSQLite3Args(bindParams, bindBlobParams, shouldPassAsArray)
-      )
+    this._run(
+      normalizeSQLite3Args(bindParams, bindBlobParams, shouldPassAsArray)
     )
   public stepAsync = (_database: NativeDatabase): Promise<any> => {
     if (this.iterator == null) {

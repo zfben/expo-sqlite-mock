@@ -1,22 +1,7 @@
-import { mockedExpoSqliteNext } from '../ExpoSQLiteNext'
-
-jest.mock(
-  `${__dirname}/../../node_modules/expo-sqlite/build/ExpoSQLite`,
-  () => mockedExpoSqliteNext
-)
-jest.mock(
-  `${__dirname}/../../node_modules/expo-sqlite/build/pathUtils`,
-  () => ({
-    createDatabasePath: jest.fn().mockImplementation((databaseName: string) => {
-      return databaseName
-    }),
-  })
-)
-
-import * as SQLite from 'expo-sqlite'
+import { eq } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/expo-sqlite'
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import { eq } from 'drizzle-orm'
+import * as SQLite from 'expo-sqlite'
 
 const testTable = sqliteTable('test', {
   id: int().primaryKey({ autoIncrement: true }),
