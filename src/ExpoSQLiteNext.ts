@@ -100,10 +100,21 @@ class NativeStatement {
     bindParams: SQLiteBindPrimitiveParams,
     bindBlobParams: SQLiteBindBlobParams,
     shouldPassAsArray: boolean
-  ): Promise<SQLiteRunResult & { firstRowValues: SQLiteColumnValues }> =>
-    this._run(
-      normalizeSQLite3Args(bindParams, bindBlobParams, shouldPassAsArray)
-    )
+  ): Promise<SQLiteRunResult & { firstRowValues: SQLiteColumnValues }> => {
+    try {
+      return await this._run(
+        normalizeSQLite3Args(bindParams, bindBlobParams, shouldPassAsArray)
+      )
+    } catch (error) {
+      if (error && typeof error === 'object' && 'code' in error) {
+        const enhancedError = new Error(error.message || error.code)
+        Object.assign(enhancedError, { code: error.code })
+        throw enhancedError
+      }
+
+      throw error
+    }
+  }
   public stepAsync = (_database: NativeDatabase): Promise<any> => {
     if (this.iterator == null) {
       this.iterator = this.sqlite3Stmt.iterate()
