@@ -22,13 +22,13 @@ export const mockedExpoSqliteNext = {
     for (const db of dbs) await db.closeAsync()
   },
 
-  NativeDatabase: (
+  NativeDatabase: function(
     databaseName: string,
     options?: SQLiteOpenOptions,
     serializedData?: Uint8Array
-  ) => new NativeDatabase(databaseName, options, serializedData),
+  ) { return new NativeDatabase(databaseName, options, serializedData) },
 
-  NativeStatement: () => new NativeStatement(),
+  NativeStatement: function() { return new NativeStatement()},
 
   defaultDatabaseDirectory: '.',
 
