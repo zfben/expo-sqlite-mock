@@ -2,3 +2,5 @@ node_modules/
 coverage/
 *.sqlite3
 .npmrc
+mise.toml
+*.tgz
