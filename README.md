@@ -53,7 +53,7 @@ it("test", async () => {
 
 ## Changelog
 
-- **3.0.3**
+- **3.0.4**
   - Fix appears to be backward compatible with Expo Go SDK 55. (Thanks [@nderevj](https://github.com/nderevj))
 
 - **3.0.2**
