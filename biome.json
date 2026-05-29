@@ -1,5 +1,13 @@
 {
-  "extends": [
-    "@faasjs/lint/biome"
-  ]
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"includes": ["src/**/*.ts", "src/**/*.tsx"]
+	},
+	"linter": {
+		"rules": {
+			"correctness": {
+				"useExhaustiveDependencies": "warn"
+			}
+		}
+	}
 }

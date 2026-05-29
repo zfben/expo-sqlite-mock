@@ -1,8 +1,6 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "types": [
-      "jest"
-    ]
-  }
+	"extends": "expo/tsconfig.base",
+	"compilerOptions": {
+		"types": ["jest"]
+	}
 }

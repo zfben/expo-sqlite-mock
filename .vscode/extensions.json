@@ -1,7 +1,5 @@
 {
   "recommendations": [
-    "github.copilot",
-    "eamodio.gitlens",
     "biomejs.biome"
   ]
 }
