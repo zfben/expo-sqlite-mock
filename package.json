@@ -1,6 +1,6 @@
 {
   "name": "expo-sqlite-mock",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "license": "MIT",
   "homepage": "https://github.com/zfben/expo-sqlite-mock",
   "repository": {
@@ -29,24 +29,26 @@
   ],
   "peerDependencies": {
     "better-sqlite3": "*",
-    "jest": "~29",
+    "expo": ">=55",
     "expo-sqlite": "*",
-    "expo": ">=53"
+    "jest": "~29"
   },
   "devDependencies": {
-    "typescript": "*",
-    "expo-sqlite": "*",
-    "better-sqlite3": "*",
-    "@types/better-sqlite3": "*",
-    "@types/react": "*",
-    "react": "*",
-    "react-test-renderer": "*",
-    "react-native": "~0.80",
+    "@biomejs/biome": "*",
     "@testing-library/react-native": "~13",
-    "jest-expo": "~53",
+    "@types/better-sqlite3": "*",
     "@types/jest": "~29",
-    "jest": "~29",
+    "@types/react": "*",
+    "better-sqlite3": "*",
     "drizzle-orm": "*",
-    "@biomejs/biome": "*"
+    "expo": "~55",
+    "expo-modules-core": "*",
+    "expo-sqlite": "*",
+    "jest": "~29",
+    "jest-expo": "~55",
+    "react": "*",
+    "react-native": "~0.80",
+    "react-test-renderer": "*",
+    "typescript": "*"
   }
 }

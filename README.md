@@ -7,6 +7,7 @@ Use [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/) with jest.
 
 ## Notice
 
+- **^4.0.0** is for expo-sqlite >=55.
 - **^3.0.0** is for expo-sqlite >=53.
 - **^2.0.0** is for expo-sqlite ~52.
 - **^1.0.0** is for expo-sqlite ~51.
@@ -52,6 +53,9 @@ it("test", async () => {
 ```
 
 ## Changelog
+
+- **4.0.0**
+  - Compatible with expo-sqlite ~55 and expo ~55.
 
 - **3.0.4**
   - Fix appears to be backward compatible with Expo Go SDK 55. (Thanks [@nderevj](https://github.com/nderevj))
